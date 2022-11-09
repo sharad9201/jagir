@@ -35,7 +35,7 @@
 
                     <div class="card mt-4" style="width: 20rem;">
 
-                        <img class="card-img-top" src="{{ asset('/uploads/images/' . $post->image) }}" alt="Card image cap" style="height: 14rem;">
+                        <img class="card-img-top" src="{{ asset('storage/posts/' . $post->image) }}" alt="Card image cap" style="height: 14rem;">
                         <div class="card-body ">
                             <h5 class="card-title"> {{ $post['title'] }}</h5>
         

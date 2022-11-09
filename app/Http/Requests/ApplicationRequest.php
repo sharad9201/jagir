@@ -22,7 +22,7 @@ class ApplicationRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {
+    { 
         return [
             //
             'name' => ['required','string','max:255'],

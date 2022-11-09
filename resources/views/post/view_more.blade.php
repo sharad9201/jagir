@@ -11,7 +11,7 @@
                         <h5>Job for:  {{ $post->title }}</h5>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <img src="{{ asset('/uploads/images/' . $post->image) }}" alt="" width="100%" height="100%">
+                        <img src="{{ asset('storage/posts/'. $post->image) }}" alt="" width="100%" height="100%">
                     </div>
                     <div class="card-text d-flex justify-content-start" style="border: .5px; color:black ;border-style: dashed;">
                         <div>

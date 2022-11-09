@@ -12,7 +12,7 @@
             <tr>
                 <td>{{$application['name']}}</td>
                 <td>{{$application['description']}}</td>
-                <td><img src="{{ asset('/uploads/images/' . $application->image) }}" alt="" width="150px"
+                <td><img src="{{ asset('storage/posts/' . $application->image) }}" alt="" width="150px"
                     height="150px"></td>
                 </td>
                 <td>

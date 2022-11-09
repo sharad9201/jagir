@@ -57,7 +57,7 @@ class PostController extends Controller
         $data['user_id'] = Auth::user()->id;
         $data['title'] = $request->title;
         $data['description'] = $request->description;
-        $path = public_path('uploads/images');
+        $path = storage_path('app/public/posts/');
         if (!File::isDirectory($path)) {
             // 0777 is an read and write permission
             File::makeDirectory($path, 0777, true, true);
@@ -92,7 +92,7 @@ class PostController extends Controller
 
         $data['name'] = $request->name;
         $data['description'] = $request->description;
-        $path = public_path('uploads/images');
+        $path = storage_path('app/public/posts/');
         if (!File::isDirectory($path)) {
             // 0777 is an read and write permission
             File::makeDirectory($path, 0777, true, true);
@@ -104,7 +104,18 @@ class PostController extends Controller
             $file->move($path, $filename);
             $data['image'] = $filename;
         }
-        
+        // if  ($request->hasFile('post_image')){
+        //     // we put here image as [parameter so taht there is image]
+        //     $image = $request->file('post_image')->getClientOriginalName();
+        //     // make a sub-folder so that there is no over write in the same file
+        //     $request->file('post_image')
+        //         ->storeAs('posts/' . $post->id, $image);
+        //         $post->update(['post_image' => $image]);
+
+        //     $file = Image::make(storage_path('app/public/posts/' . $post->id . '/' . $image));
+        //     $file->resize(600, 400);
+        //     $file->save(storage_path('app/public/posts/' . $post->id . '/thumbnail_' . $image));
+        // }
         $app = Application::create($data);
         Mail::send('email.apply',$app->toArray(),
         function($message){
@@ -132,7 +143,8 @@ class PostController extends Controller
         // $file = $download->image;
         $images = DB::table('applications')->where('id',$id)->first();
         // dd($images);
-        $pathToFile = public_path("uploads/images/{$images->image}");
+       
+        $pathToFile = storage_path("app/public/posts/{$images->image}");
         // dd($file);
        return response()->download($pathToFile);
     }
